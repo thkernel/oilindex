@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="product-summary-wrap mt-30 mb-30">
+    <div class="row">
+      <div class="col-lg-6 summary-before">
+        <div class="product-thumbnails thumbnails">
+          <%= product_cover_thumbnail(@product) %>
+        </div>
+      </div>
+
+      <div class="col-lg-6 entry-summary">
+
+        
+
+       
+         <h2 class="product-title entry-title ">
+          <%= @product.name %>
+          </h2>
+        
+        <p class="price">
+         
+          <span class="woocommerce-Price-amount amount xof"><%= @product.selling_price_xof %>&nbsp;
+          <span class="woocommerce-Price-currencySymbol xof">CFA</span>
+          </span>
+          <ins>
+          <span class="woocommerce-Price-amount amount"><%= @product.selling_price_eur %>&nbsp;
+          <span class="woocommerce-Price-currencySymbol">Euro</span></span>
+          </ins></p>
+  
+       
+
+        
+      <p>
+       
+        <%= @product.long_description %>
+      </p>
+
+      <p>
+       
+        <%= @product.status %>
+      </p>
+
+      <form class="cart" method="post" enctype="multipart/form-data">
+		<input type="hidden" id="thwepof_product_fields" name="thwepof_product_fields" value="">    <div class="quantity buttons_added"><input type="button" value="-" class="minus">
+        <input type="number" id="quantity_5f1be7095ea56" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qté" size="4" pattern="[0-9]*" inputmode="numeric" aria-labelledby="quantité de Paquet de 6 coussinet d'allaitement lavable AVENT">
+    <input type="button" value="+" class="plus"></div>
+    
+		<button type="submit" name="add-to-cart" value="2939" class="btn btn-primary single_add_to_cart_button button alt">Ajouter au panier</button>
+
+		
+<div class="yith-wcwl-add-to-wishlist add-to-wishlist-2939  wishlist-fragment on-first-load" data-fragment-ref="2939" data-fragment-options="{&quot;base_url&quot;:&quot;https:\/\/koromy.com\/product\/paquet-de-6-coussinet-dallaitement-lavable-avent?page&amp;product=paquet-de-6-coussinet-dallaitement-lavable-avent&amp;post_type=product&amp;name=paquet-de-6-coussinet-dallaitement-lavable-avent&quot;,&quot;wishlist_url&quot;:&quot;\/&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:true,&quot;show_exists&quot;:false,&quot;product_id&quot;:2939,&quot;parent_product_id&quot;:2939,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:true,&quot;browse_wishlist_text&quot;:&quot;Parcourir la wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;Ce produit est dans votre wishlist&quot;,&quot;product_added_text&quot;:&quot;Produit ajout\u00e9 !&quot;,&quot;heading_icon&quot;:&quot;&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:false,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+			
+			<!-- ADD TO WISHLIST -->
+			
+
+<span class="ajax-loading"></span>
+			<!-- COUNT TEXT -->
+			
+			</div>	</form>
+      </div>
+      
+    </div>
+  </div>
+</div>

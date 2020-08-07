@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Statement Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @statement_types.each do |statement_type| %>
+      <tr>
+        <td><%= statement_type.name %></td>
+        <td><%= statement_type.description %></td>
+        <td><%= statement_type.status %></td>
+        <td><%= statement_type.user %></td>
+        <td><%= link_to 'Show', statement_type %></td>
+        <td><%= link_to 'Edit', edit_statement_type_path(statement_type) %></td>
+        <td><%= link_to 'Destroy', statement_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Statement Type', new_statement_type_path %>

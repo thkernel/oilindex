@@ -1,0 +1,55 @@
+<section class="products">
+    <div class="container">
+        <div class="heading-text heading-section text-center">
+            <h3>Produits récents</h3>
+        </div>
+       <div class="row">
+
+		<% @last_products.each do |product| %>
+
+            <div class="col-md-4 product-item">	
+                <div class="card">
+                    <div class="card-body">
+						<div class="card-thumbnail">
+							<%= link_to product_show_path(product) do %>
+								<%= product_thumbnail(product) %>
+							<% end %>
+						</div>
+						<div class="card-title">
+							<h5> <%= link_to product.name, product_show_path(product) %>  </h5>                         
+						</div>
+                            
+						<div class="label-wrap label-right hide-on-list">
+							<span class="label-status label-status-7 label label-default">
+								<%= product_category(product.product_category_id).name %>
+							</span>
+							                  
+						</div>
+						<div class="price">
+							<span class="item-price">
+								<%= number_with_precision(product.selling_price_xof, delimiter: " ", separator: "", precision: 0) %>
+							</span>
+
+							
+						</div>	
+						
+					   
+						<div class="item-footer text-center">
+							
+							<%= link_to raw('<i class="fa fa-shopping-bag" aria-hidden="true"></i> J\'achete'), add_to_cart_path(product: product.id) , class: "btn btn-primary", remote: true %>
+							
+						</div>
+						
+							
+                    </div>
+                </div>	
+			</div>
+		<% end %> 
+	</div>
+
+	<div class="row load-more">
+		<%= will_paginate @last_products, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails, class: "pagination load-more-button" %> 
+	</div>
+       
+    </div>
+</section>

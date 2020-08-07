@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sale_point.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sale_point.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @sale_point.user %>
+</p>
+
+<%= link_to 'Edit', edit_sale_point_path(@sale_point) %> |
+<%= link_to 'Back', sale_points_path %>

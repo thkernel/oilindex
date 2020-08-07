@@ -1,0 +1,151 @@
+<div class="signin-page">
+    <div class="signin--page__header">
+			<div class="signin-logo tx-center tx-28 tx-bold tx-inverse">
+				<%= render 'components/logo/logo' %>
+			</div>
+		<div class="tx-center mg-b-20">Inscrivez-vous gratuitement!</div>
+	</div>
+	
+	<div class="sigin-page__body">
+   
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+ 
+
+  
+									
+        <!-- Profile nested form -->
+        <%= f.fields_for :profile do |p| %>
+          
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= p.label :first_name, "Prénom", class: "required" %>
+                <%= p.text_field :first_name, class: 'form-control', placeholder: "Prénom", required: true %>													
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= p.label :last_name, "Nom", class: "required" %>
+                <%= p.text_field :first_name, class: 'form-control', placeholder: "Nom",  required: true %>													
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= p.label :gender, "Genre", class: "required" %>
+                <%= p.select :gender, GENDERS,   {prompt: "Sélectionner"},  class: "form-control", required: true %>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+          
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= p.label :born_date, "Date de naissance", class: "required" %>
+                <%= p.date_field :born_date,  class: "form-control", required: true %>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= p.label :profession, "Profession", class: "required" %>
+                <%= p.text_field :profession, class: 'form-control', placeholder: "Profession", required: true %>													
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <%= p.label :phone, "Téléphone", class: "required" %>
+                <%= p.text_field :phone, class: 'form-control', placeholder: "Téléphone", required: true %>													
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+                
+                <div class="form-group">
+                 <%= p.label :country, "Pays", class: "required" %>
+                  <%= p.text_field :country, class: "form-control", placeholder: "Pays",  required: true %>													
+                </div>
+              
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                 <%= p.label :city, "Ville", class: "required" %>
+                  <%= p.text_field :city, class: "form-control", placeholder: "Ville",  required: true %>													
+                </div>
+              
+              </div>
+
+              
+            </div>
+              
+          <% end %>
+
+
+     
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :email, "Email", class: "required" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control",  placeholder: "E-mail" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :registration_reason, "Motif d'inscription", class: "required" %>
+            <%= f.collection_select :registration_reason, @registration_reasons, :id, :name, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%;",  required: true %>													
+          </div>    
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :password, "Mot de passe", class: "required" %>
+            <% if @minimum_password_length %>
+            <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control",  placeholder: "Mot de passe" %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :password_confirmation, "Confirmation du mot de passe", class: "required" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",  placeholder: "Confirmation du mot de passe" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+       
+           En vous inscrivant, vous déclarez avoir lu et accepté <%= link_to "les conditions générales d'utilisation.", root_path %>
+        
+      </div>
+       
+
+  <div class="actions">
+    <%= f.submit "S'inscrire", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>
+  </div>
+              
+	<div class="o-line">
+        <div class="mg-t-10 tx-center">
+			Déjà un compte? <%= link_to "Se connecter", new_user_session_path(), class: "tx-info" %>
+		</div>
+
+	</div>
+   
+
+</div>

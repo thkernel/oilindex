@@ -1,0 +1,142 @@
+<%= form_with(model: member, local: false) do |form| %>
+ <div class="modal-body">
+		<ul class="errors">
+    </ul>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :first_name, "Prénom", class: "required" %>
+          <%= form.text_field :first_name, class: "form-control", placeholder: "Prénom", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :last_name, "Nom", class: "required" %>
+          <%= form.text_field :last_name, class: "form-control", placeholder: "Nom", required: true %>
+        </div>
+      </div>
+      <div class="col-md-4">
+
+        <div class="form-group">
+          <%= form.label :gender, "Genre", class: "required" %>
+          <%= form.select :gender, GENDERS, {prompt: "Sélectionner"}, class: "form-control",  required: true %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= form.label :phone, "Téléphone", class: "required" %>
+          <%= form.text_field :phone, class: "form-control", placeholder: "Téléphone", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= form.label :country, "Pays", class: "required" %>
+          <%= form.text_field :country, class: "form-control", placeholder: "Pays", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= form.label :city, "Ville", class: "required" %>
+          <%= form.text_field :city , class: "form-control", placeholder: "Ville", required: true%>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= form.label :email %>
+          <%= form.email_field :email, class: "form-control", placeholder: "Email", required: true %>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= form.label :amount_paid, "Somme payée", class: "required" %>
+          <%= form.number_field :amount_paid, class: "form-control",  lang: "fr", step: "1", value: (member.amount_paid.present? ? member.amount_paid : 0), min: "0",  required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= form.label :actions_number,"Nombre d'actions", class: "required" %>
+          <%= form.number_field :actions_number, class: "form-control",  lang: "fr", step: "1", value: (member.actions_number.present? ? member.actions_number : 0), min: "0", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= form.label :action_percentage, "% en action", class: "required" %>
+          <%= form.number_field :action_percentage, class: "form-control",  lang: "fr", step: "1", value: (member.action_percentage.present? ? member.action_percentage : 0), min: "0",  required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= form.label :remaining_actions, "Actions restantes", class: "required" %>
+          <%= form.number_field :remaining_actions, class: "form-control",  lang: "fr", step: "1", value: (member.remaining_actions.present? ? member.remaining_actions : 0), min: "0", required: true %>
+        </div>
+      </div>
+    </div>
+
+  <div class=row>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= form.label :annual_yield, "Rendement annuel" %>
+        <%= form.number_field :annual_yield, class: "form-control",  lang: "fr", step: "1", value: (member.annual_yield.present? ? member.annual_yield : 0), min: "0", required: true %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= form.label :current_value, "Valeur actuelle" %>
+        <%= form.number_field :current_value, class: "form-control",  lang: "fr", step: "1", value: (member.current_value.present? ? member.current_value : 0), min: "0",  required: true %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= form.label :annual_expected_yield, "Rendement prévu annuel" %>
+        <%= form.number_field :annual_expected_yield, class: "form-control",  lang: "fr", step: "1", value: (member.annual_expected_yield.present? ? member.annual_expected_yield : 0), min: "0",  required: true %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= form.label :turnover, "Chiffres d'affaires" %>
+        <%= form.number_field :turnover , class: "form-control",  lang: "fr", step: "1", value: (member.turnover.present? ? member.turnover : 0), min: "0", required: true%>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :business_commissions, "Commissions d'affaires" %>
+        <%= form.number_field :business_commissions , class: "form-control",  lang: "fr", step: "1", value: (member.business_commissions.present? ? member.business_commissions : 0), min: "0",  required: true%>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :selling_price, "Prix de vente" %>
+        <%= form.number_field :selling_price, class: "form-control",  lang: "fr", step: "1", value: (member.selling_price.present? ? member.selling_price : 0), min: "0", required: true %>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- modal body -->
+	<div class="modal-footer">
+		<%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+		<%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+	</div>
+<% end %>

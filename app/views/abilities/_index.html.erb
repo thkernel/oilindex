@@ -1,0 +1,20 @@
+<% @abilities.each do |ability| %>
+    <tr>
+    <td><%= ability.role %></td>
+    <td><%= ability.permission %></td>
+    <td><%= ability.ability %></td>
+    <td><%= ability.status %></td>
+    <td>
+	    <div class="action-buttons">
+			<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_ability_path(ability), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), ability_delete_path(ability), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+    </tr>
+<% end %>

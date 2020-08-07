@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  statement_type: one
+  product: one
+  statement_time: 2020-08-07 10:27:03
+  status: MyString
+  user: one
+
+two:
+  statement_type: two
+  product: two
+  statement_time: 2020-08-07 10:27:03
+  status: MyString
+  user: two

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Entrepreneur:</strong>
+  <%= @credit_application.entrepreneur %>
+</p>
+
+<p>
+  <strong>Entrepreneurship time:</strong>
+  <%= @credit_application.entrepreneurship_time %>
+</p>
+
+<p>
+  <strong>Activity area:</strong>
+  <%= @credit_application.activity_area %>
+</p>
+
+<p>
+  <strong>Desired amount:</strong>
+  <%= @credit_application.desired_amount %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @credit_application.notes %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @credit_application.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @credit_application.user %>
+</p>
+
+<%= link_to 'Edit', edit_credit_application_path(@credit_application) %> |
+<%= link_to 'Back', credit_applications_path %>

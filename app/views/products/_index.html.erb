@@ -1,0 +1,30 @@
+<% @products.each do |product| %>
+    <tr>
+    <td><%= product_category(product.product_category_id).name %></td>
+    <td><%= product.name %></td>
+    <td><%= product.buying_price_xof %></td>
+    <td><%= product.buying_price_eur %></td>
+    <td><%= product.selling_price_xof %></td>
+    <td><%= product.selling_price_eur %></td>
+    <td><%= product.rate %></td>
+    <td><%= product.margin_xof %></td>
+    <td><%= product.margin_eur %></td>
+    <td><%= product.commission_xof %></td>
+    <td><%= product.commission_eur %></td>
+    <td><%= product.commission_stockholder %></td>
+   
+    
+   <td>
+	    <div class="action-buttons">
+			<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_product_path(product), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), product_delete_path(product), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+    </tr>
+<% end %>

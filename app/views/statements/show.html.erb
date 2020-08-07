@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Statement type:</strong>
+  <%= @statement.statement_type %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @statement.product %>
+</p>
+
+<p>
+  <strong>Statement time:</strong>
+  <%= @statement.statement_time %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @statement.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @statement.user %>
+</p>
+
+<%= link_to 'Edit', edit_statement_path(@statement) %> |
+<%= link_to 'Back', statements_path %>
