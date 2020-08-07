@@ -1,42 +1,50 @@
-<%= form_with(model: statement, local: true) do |form| %>
-  <% if statement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(statement.errors.count, "error") %> prohibited this statement from being saved:</h2>
+<%= form_with(model: statement, local: false) do |form| %>
+  <div class="modal-body">
+      <ul class="errors">
+        </ul>
 
-      <ul>
-      <% statement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :statement_type_id, "Type", class: "required" %>
+            <%= form.collection_select :statement_type_id, @statement_types, :id, :name, {prompt: "Sélectionner"},class: "form-control", style: "width: 100%;" %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :product_id, "Produit", class: "required" %>
+           <%= form.collection_select :product_id, @products, :id, :name, {prompt: "Sélectionner"},class: "form-control", style: "width: 100%;" %>
+          </div>
+        </div>
+      </div>
+
+  <div class="form-group">
+    <%= form.label :quantity, "Quantité", class: "required" %>
+   <%= form.number_field :quantity,class: "form-control", required: true %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :sale_point_id, "Station", class: "required" %>
+       <%= form.collection_select :sale_point_id, @sale_points, :id, :name, {prompt: "Sélectionner"},class: "form-control", style: "width: 100%;" %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :statement_type_id %>
-    <%= form.text_field :statement_type_id %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :agent_id, "Produit", class: "required" %>
+       <%= form.collection_select :agent_id, @agents, :id, :full_name, {prompt: "Sélectionner"},class: "form-control", style: "width: 100%;" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
-  </div>
+ 
 
-  <div class="field">
-    <%= form.label :statement_time %>
-    <%= form.datetime_select :statement_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+ </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
   </div>
 <% end %>

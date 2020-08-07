@@ -1,35 +1,49 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Statements</h1>
 
-<table>
+<div class="br-pageheader">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Index</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
+<div class="br-pagebody">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
+
+        <div class="text-right">
+            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_statement_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: true %>
+
+        </div>
+
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
-      <th>Statement type</th>
-      <th>Product</th>
-      <th>Statement time</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Produit</th>
+      
+      <th>Quantité</th>
+     
+      <th>Station</th>
+      <th>Agent</th>
+ 
+    
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @statements.each do |statement| %>
-      <tr>
-        <td><%= statement.statement_type %></td>
-        <td><%= statement.product %></td>
-        <td><%= statement.statement_time %></td>
-        <td><%= statement.status %></td>
-        <td><%= statement.user %></td>
-        <td><%= link_to 'Show', statement %></td>
-        <td><%= link_to 'Edit', edit_statement_path(statement) %></td>
-        <td><%= link_to 'Destroy', statement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="statements">
+    <%= render "index" %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Statement', new_statement_path %>
+</div>
+</div>
+<div id="statement-modal" class="c-modal modal fade" data-backdrop="static"></div>

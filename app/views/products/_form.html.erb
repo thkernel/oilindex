@@ -4,113 +4,26 @@
     </ul>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col">
         <div class="form-group">
           <%= form.label :product_category_id, "Catégorie", class: "required" %>
           <%= form.collection_select :product_category_id, @product_categories, :id, :name, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%;", required: true %>
         </div>
-      </div>
-
-      <div class="col-md-6">
+     
+      
         <div class="form-group">
           <%= form.label :name, "Nom", class: "required" %>
           <%= form.text_field :name, class: "form-control", placeholder: "Nom", required: true %>
         </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3">
+     
         <div class="form-group">
-          <%= form.label :buying_price_xof, "Prix d'achat (F CFA)", class: "required" %>
-          <%= form.number_field :buying_price_xof, class: "form-control", required: true %>
+          <%= form.label :price, "Prix", class: "required" %>
+          <%= form.number_field :price, class: "form-control", required: true %>
         </div>
-      </div>
+     </div>
 
-      <div class="col-md-3">
-        <div class="form-group">
-          <%= form.label :buying_price_eur, "Prix d'achat (Euro)", class: "required" %>
-          <%= form.number_field :buying_price_eur, class: "form-control", required: true %>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="form-group">
-          <%= form.label :selling_price_xof, "Prix de vente (F CFA)", class: "required" %>
-          <%= form.number_field :selling_price_xof, class: "form-control", required: true %>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-
-        <div class="form-group">
-          <%= form.label :selling_price_eur, "Prix de vente (Euro)", class: "required" %>
-          <%= form.number_field :selling_price_eur, class: "form-control", required: true %>
-        </div>
-      </div>
-    </div>
-
-   
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <%= form.label :margin_xof, "Marge (F CFA)", class: "required" %>
-          <%= form.text_field :margin_xof, class: "form-control", required: true %>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="form-group">
-          <%= form.label :margin_eur, "Marge (Euro)", class: "required" %>
-          <%= form.text_field :margin_eur, class: "form-control", required: true %>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="form-group">
-          <%= form.label :commission_xof, "Commission (C CFA)", class: "required" %>
-          <%= form.text_field :commission_xof, class: "form-control", required: true %>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="form-group">
-          <%= form.label :commission_eur, "Commission (Euro)", class: "required" %>
-          <%= form.text_field :commission_eur, class: "form-control", required: true %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <%= form.label :rate, "Taux (%)", class: "required" %>
-                <%= form.text_field :rate, class: "form-control", required: true %>
-            </div>
-        </div>
-
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <%= form.label :commission_stockholder %>
-                <%= form.text_field :commission_stockholder, class: "form-control", required: true %>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class=col-md-12>
-            <div class="form-group">
-                <%= form.label :description %>
-                <%= form.text_area :description, class: "form-control", placeholder: "Description" %>
-            </div>
-        </div>
-
-        <div class=col-md-12>
-            <div class="form-group">
-                <%= form.label :image, "Photo" %>
-                <%= form.file_field :image, class: "form-control", placeholder: "Description" %>
-            </div>
-        </div>
+      
+       
     </div>
 
  </div><!-- modal body -->

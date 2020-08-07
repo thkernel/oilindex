@@ -1,0 +1,22 @@
+<% @statements.each do |statement| %>
+  <tr>
+    <td><%= statement.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= statement_type(statement.statement_type_id).name %></td>
+    <td><%= product(statement.product_id).name %></td>
+    <td><%= statement.quantity %></td>
+    <td><%= sale_point(statement.sale_point_id).name %></td>
+    <td><%= agent(statement.agent_id).full_name %></td>
+    <td>
+        <div class="action-buttons">
+            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_statement_path(statement), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), statement_delete_path(statement), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

@@ -1,7 +1,6 @@
 <% @product_categories.each do |product_category| %>
     <tr>
     <td><%= product_category.name %></td>
-    <td><%= parent_category(product_category.parent_category).name if product_category.parent_category %></td>
     <td>
 	    <div class="action-buttons">
 			<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>

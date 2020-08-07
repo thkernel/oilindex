@@ -1,6 +1,7 @@
 class AgentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_agent, only: [:show, :edit, :update, :destroy]
-
+  layout "dashboard"
   # GET /agents
   # GET /agents.json
   def index
@@ -14,25 +15,32 @@ class AgentsController < ApplicationController
 
   # GET /agents/new
   def new
+    @sale_points = SalePoint.all
     @agent = Agent.new
   end
 
   # GET /agents/1/edit
   def edit
+    
+     @sale_points = SalePoint.all
+    
   end
 
   # POST /agents
   # POST /agents.json
   def create
-    @agent = Agent.new(agent_params)
+    @agent = current_user.agents.build(agent_params)
 
     respond_to do |format|
       if @agent.save
+        @agents = Agent.all
         format.html { redirect_to @agent, notice: 'Agent was successfully created.' }
         format.json { render :show, status: :created, location: @agent }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @agent.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -42,14 +50,21 @@ class AgentsController < ApplicationController
   def update
     respond_to do |format|
       if @agent.update(agent_params)
+        @agents = Agent.all
         format.html { redirect_to @agent, notice: 'Agent was successfully updated.' }
         format.json { render :show, status: :ok, location: @agent }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @agent.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
+
+def delete
+      @agent = Agent.find(params[:agent_id])
+    end
 
   # DELETE /agents/1
   # DELETE /agents/1.json
@@ -69,6 +84,6 @@ class AgentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def agent_params
-      params.require(:agent).permit(:uid, :first_name, :last_name, :gender, :sale_point_id, :status, :user_id)
+      params.require(:agent).permit(:uid, :first_name, :last_name, :gender, :sale_point_id)
     end
 end

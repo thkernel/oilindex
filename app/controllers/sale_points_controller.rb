@@ -1,6 +1,7 @@
 class SalePointsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_sale_point, only: [:show, :edit, :update, :destroy]
-
+  layout "dashboard"
   # GET /sale_points
   # GET /sale_points.json
   def index
@@ -24,15 +25,18 @@ class SalePointsController < ApplicationController
   # POST /sale_points
   # POST /sale_points.json
   def create
-    @sale_point = SalePoint.new(sale_point_params)
+    @sale_point = current_user.sale_points.build(sale_point_params)
 
     respond_to do |format|
       if @sale_point.save
+        @sale_points = SalePoint.all
         format.html { redirect_to @sale_point, notice: 'Sale point was successfully created.' }
         format.json { render :show, status: :created, location: @sale_point }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @sale_point.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -42,14 +46,21 @@ class SalePointsController < ApplicationController
   def update
     respond_to do |format|
       if @sale_point.update(sale_point_params)
+        @sale_points = SalePoint.all
         format.html { redirect_to @sale_point, notice: 'Sale point was successfully updated.' }
         format.json { render :show, status: :ok, location: @sale_point }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @sale_point.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
+
+  def delete
+      @sale_point = SalePoint.find(params[:sale_point_id])
+    end
 
   # DELETE /sale_points/1
   # DELETE /sale_points/1.json
@@ -69,6 +80,6 @@ class SalePointsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sale_point_params
-      params.require(:sale_point).permit(:name, :status, :user_id)
+      params.require(:sale_point).permit(:name)
     end
 end

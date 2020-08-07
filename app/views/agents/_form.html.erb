@@ -1,52 +1,34 @@
-<%= form_with(model: agent, local: true) do |form| %>
-  <% if agent.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(agent.errors.count, "error") %> prohibited this agent from being saved:</h2>
+<%= form_with(model: agent, local: false) do |form| %>
+ 
 
-      <ul>
-      <% agent.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="modal-body">
+    <ul class="errors">
+    </ul>
 
-  <div class="field">
-    <%= form.label :uid %>
-    <%= form.text_field :uid %>
+  <div class="form-group">
+    <%= form.label :first_name, "Prénom", class: "required" %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "Prénom", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="form-group">
+    <%= form.label :last_name, "Nom", class: "required" %>
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Nom", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="form-group">
+    <%= form.label :gender, "Sexe", class: "required" %>
+    <%= form.select :gender , GENDERS, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :gender %>
-    <%= form.text_field :gender %>
+  <div class="form-group">
+    <%= form.label :sale_point_id , "Station", class: "required" %>
+    <%= form.collection_select :sale_point_id, @sale_points, :id, :name, {prompt: "Sélectionner"},class: "form-control", style: "width: 100%;" %>
   </div>
 
-  <div class="field">
-    <%= form.label :sale_point_id %>
-    <%= form.text_field :sale_point_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+   </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
   </div>
 <% end %>

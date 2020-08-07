@@ -12,6 +12,11 @@ class DashboardController < ApplicationController
 			
 		#end
 
+		@total_agents = Agent.count
+		@total_sale_points = SalePoint.count
+
+		@total_quantity = 0
+		@total_amount = 0
 
 
 		
